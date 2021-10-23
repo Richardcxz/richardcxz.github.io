@@ -24,8 +24,8 @@
   z-index: 99;
   border: none;
   outline: none;
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
+  background-color: rgb(27, 25, 25);
+  color: rgb(255, 255, 255);
   font-weight: bold;
   cursor: pointer;
   padding: 12px;
@@ -72,7 +72,7 @@
       <header class="mb-auto">
         <div class="col-4 text-center">
           <nav class="nav nav-masthead justify-content-center float-md-end fixed-top bg-dark">
-            <a id="in" class="nav-link active" href="#ric">Início</a>
+            <a id="in" class="nav-link active" href="#ric" >Início</a>
             <a id="pro" class="nav-link" href="#proj">Projetos</a>
             <a id="con" class="nav-link" href="#cont">Contato</a>
           </nav>
@@ -80,9 +80,9 @@
       </header>
     
 <main>
-  <h1 class="visually-hidden"> examples</h1>
+  <h1 id="ric"></h1>
 
-  <div id="ric" class="px-4 py-5 my-5 text-center">
+  <div class="px-4 py-5 my-5 text-center">
     <img class="d-block mx-auto mb-4 center-cropped" src="../assets/brand/image2.svg" alt="" width="132" height="124">
     <h1 class="display-5 fw-bold">Richard</h1>
     <div class="col-lg-6 mx-auto">
@@ -213,6 +213,21 @@
   </body>
 
   <script>
+
+
+document.getElementById("pro").onclick = function() {prox()};
+
+    function prox() {
+      var a = document.getElementById("in");
+      var b = document.getElementById("pro");
+      var c = document.getElementById("con");
+
+      a.classList.remove("nav-link active");
+      a.classList.add("nav-link");
+      b.classList.remove("nav-link");
+      b.classList.add("nav-link active");
+    }
+
     var mybutton = document.getElementById("myBtn");
     
     window.onscroll = function() {scrollFunction()};
