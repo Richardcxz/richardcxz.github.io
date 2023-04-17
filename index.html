@@ -7,125 +7,155 @@
     <meta name="author" content="Richard Mateus">
     <meta name="generator" content="">
     <title>Richard - Início</title>
-
-
-    
-
-    <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-    <style>
-
-#myBtn {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 30px;
-  z-index: 99;
-  border: none;
-  outline: none;
-  background-color: rgb(27, 25, 25);
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-  cursor: pointer;
-  padding: 12px;
-  border-radius: 50px;
-  font-size: 20px;
-}
-
-#myBtn:hover {
-  background-color: #555;
-}
-
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .center-cropped {
-        object-fit: none;
-        width: 25%;
-        height: 25%;
-        margin-bottom: 1rem;
-      }
-
-      body {
-  overflow-x: hidden;
-  }
-
-
-    </style>
-
-    
-    <link href="design.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="1x1.png">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <link rel="stylesheet" href="design.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+    <script src="https://use.fontawesome.com/bad294cf04.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  
   </head>
-  <body class="text-light bg-dark">
+  <body class="text-dark">
+<script src="https://cdn.jsdelivr.net/npm/three@0.135.0/build/three.min.js"></script>
+<script>
+// Criando a cena
+const scene = new THREE.Scene();
 
-    <button onclick="topFunction()" id="myBtn" title="Go to top"><span>&#160;</span>^<span>&#160;</span></button>
+// Criando a câmera
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 5;
 
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column ">
+// Criando a geometria da imagem
+const geometry = new THREE.PlaneGeometry(6, 6);
+
+// Carregando a textura da imagem
+const loader = new THREE.TextureLoader();
+const texture = loader.load('image.png');
+
+// Criando o material da imagem
+const material = new THREE.MeshBasicMaterial({
+  map: texture,
+  side: THREE.DoubleSide,
+  transparent: true,
+  alphaTest: 0.5
+});
+
+// Criando o objeto da imagem
+const image = new THREE.Mesh(geometry, material);
+scene.add(image);
+
+// Renderizando a cena
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setClearColor('#e7e7e7');
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+let currentRotation = 0;
+let isDragging = false;
+
+renderer.domElement.addEventListener('mousedown', () => {
+  isDragging = true;
+});
+
+renderer.domElement.addEventListener('mousemove', (event) => {
+  if (isDragging) {
+    const delta = event.movementX * 0.01;
+    currentRotation += delta;
+    image.rotation.y = currentRotation;
+  }
+});
+
+renderer.domElement.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+
+function animate() {
+  requestAnimationFrame(animate);
+  currentRotation += 0.01;
+  image.rotation.y = currentRotation;
+  renderer.render(scene, camera);
+}
+
+animate();
+
+</script>
+    <h1 id="ric" href="#ric"></h1>
+
+    <div id="loading"><i class="fa fa-spinner fa-spin"></i></div>
+
+    <button onclick="topFunction()" id="myBtn" title="Ir para o topo"></button>
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="mb-auto">
         <div class="col-4 text-center">
-          <nav class="nav nav-masthead justify-content-center float-md-end fixed-top bg-dark">
-            <a id="in" class="nav-link active" href="#ric" >Início</a>
-            <a id="pro" class="nav-link" href="#proj">Projetos</a>
-            <a id="con" class="nav-link" href="#cont">Contato</a>
+          <br>
+          <nav class="navbar navbar-expand-md justify-content-center float-md-end fixed-top mx-auto"> 
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav flex-column mb-2 mb-md-0">
+                  <li class="nav-item">
+                    <a id="inicio" class="nav-link active text-dark">Início</a>
+                  </li>
+                  <li class="nav-item">
+                    <a id="projetos" class="nav-link text-dark">Projetos</a>
+                  </li>
+                  <li class="nav-item">
+                    <a id="contato" class="nav-link text-dark">Contato</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </nav>
         </div>
       </header>
     
 <main>
-  <h1 id="ric"></h1>
+  <h1 id="ric" href="#ric"></h1>
 
   <div class="px-4 py-5 my-5 text-center">
-    <img class="d-block mx-auto mb-4 center-cropped" data-aos="zoom-in" src="../assets/brand/image2.svg" alt="" width="132" height="124">
-    <h1 class="display-5 fw-bold" data-aos="fade-up">Richard</h1>
-
+    <h1 data-aos="zoom-in" class="display-5 fw-bold">Richard</h1>
+    <br><br><br><br><br><br><br><br>
     <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4" data-aos="fade-up-left" data-aos-easing="ease" data-aos-delay="400">Se aprofundando: Web (HTML, CSS3, JavaScript, Bootstrap 4), Python, Java.</p>
-      <p class="lead mb-4">Conhecedor: C, C++, C#, React, React Native.</p>
       <br>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <div class="d-grid gap-2 d-sm-flex">
+        <img class="img-fluid d-block mx-auto mb-4" data-aos="zoom-in" src="langs.jpg" alt="" height="150">
       </div>
     </div>
   </div>
 
-  <div class="b-example-divider"></div>
-
   <div class="px-4 pt-5 my-5 text-center border-bottom">
     <h1 class="display-6 fw-bold" data-aos="fade-up">Sobre mim</h1>
     <div class="col-lg-6 mx-auto">
-      <p class="lead mb-1" data-aos="fade-left" data-aos-easing="ease" data-aos-delay="400">Fazendo graduação em Análise e Desenvolvimento de Sistemas - FATEC.</p>
-      <p class="lead mb-1" data-aos="fade-left" data-aos-easing="ease" data-aos-delay="400">Possui grande afinidade com informática e algoritmos.</p>
-      <p class="lead mb-4" data-aos="fade-left" data-aos-easing="ease" data-aos-delay="400">Sempre pronto para aprender novas tecnologias.</p>
+      <p class="lead mb-1" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="300">
+        Meu nome é Richard e sou um estudante de Análise e Desenvolvimento de Sistemas<br> na FATEC.
+        Sempre tive grande afinidade com informática e algoritmos,<br> e hoje estou focado em me aprofundar em diversas tecnologias.<br>
+        Atualmente, sou <b>especializado em Web</b>, trabalhando com <b>HTML5, CSS3, JavaScript</b> e <b>Bootstrap 4.</b>
+        Também tenho experiêcia com <b>Python</b> e projetos com outras linguagens,<br> como <b>C, C++, C#, React, React Native</b> e <b>Java.</b><br>
+        Estou constantemente aprendendo e me atualizando sobre <b>novas tecnologias</b>, e isso é algo que realmente me anima. 
+        Ao fazer projetos, gosto de usar o<br> desenvolvimento incremental (uma das práticas fundamentais da metodologia ágil).<br>
+        Este portfólio tem como objetivo destacar alguns dos meus projetos mais recentes, incluindo desenvolvimento web, mobile e projetos pessoais. 
+        Cada um desses projetos apresenta um desafio único que eu tive que superar, e estou animado para compartilhar meus esforços com você.
+        <br>Fique à vontade para explorar meu portfólio e obrigado por visitar o website,<br> espero que você goste do que vê!
+
+      </p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
         <br>
         <br>
       </div>
     </div>
-    <div class="overflow-hidden" style="max-height: 30vh;">
-      <div class="container px-5">
-        <img src="rdn1.jpg" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
-      </div>
-    </div>
   </div>
 
-  <div class="b-example-divider"></div>
-
-  <div id="proj" class="px-4 pt-5 my-5 text-center ">
-    <h1 class="display-5 fw-bold" data-aos="fade-up">Meus Projetos</h1>
+  <div id="proj" href="#proj" class="px-4 pt-5 my-5 text-center ">
+    <h1  class="display-5 fw-bold" data-aos="fade-up">Meus Projetos</h1>
     <div class="col-lg-6 mx-auto">
-      <p class="lead mb-1" data-aos="fade-left" data-aos-easing="ease" data-aos-delay="400">Aqui estão os projetos que fazem parte do meu portfólio, espero que goste.</p>
+      <p class="lead mb-1" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="400">Aqui estão alguns projetos que fazem parte do meu portfólio.</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5"></div>
         <br>
         <br>
@@ -138,90 +168,102 @@
             <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
             <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
             <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="5"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="6"></button>
           </div>
         
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="const.png" alt="Calculadora" class="rounded mx-auto d-block  w-75">
+              <p>Em atualização.</p>
             </div>
             <div class="carousel-item">
-              <img src="central.png" alt="Sistema de Loja Completo" class="rounded mx-auto d-block  w-75">
+              <iframe src="https://albumizr.com/a/SjAW" scrolling="no" frameborder="0" allowfullscreen width="700" height="400"></iframe>
+              <p>Um sistema para idealização, desenvolvimento e gestão de projetos de programação feitos por equipes com poucos integrantes. 
+                Esse sistema inclui páginas que auxiliam na comunicação, separação de tarefas, gerenciamento de membros, acompanhamento 
+                e revisão do desenvolvimento de um projeto.<br>Feito usando HTML, CSS, JavaScript, BootStrap e NodeJS.</p>
+            </div>
+            <div class="carousel-item">
+              <iframe src="https://albumizr.com/a/71oz" scrolling="no" frameborder="0" allowfullscreen width="700" height="400"></iframe>
+              <p>Um projeto para o arduino, onde o usuário usa o teclado para criar uma melodia e a envia ao arduino, que processa a mesma e a toca.
+              <br>Feito usando HTML, CSS, JavaScript, BootStrap e NodeJS.</p>
             </div>
             <div class="carousel-item ">
-              <img src="img1.png" alt="APP Loja Simples" class="rounded mx-auto d-block  w-75 ">
+              <iframe src="https://albumizr.com/a/4JhS" scrolling="no" frameborder="0" allowfullscreen width="700" height="400"></iframe>
+              <p>Uma aplicação simples mobile que funciona como uma loja, feita para testar funcionalidades do RNative.
+                <br>Feito com React Native.</p>
             </div>
             <div class="carousel-item">
-              <img src="img2.png" alt="APP Loja Simples" class="rounded mx-auto d-block  w-75" >
-            </div>
-            <div class="carousel-item">
-              <img src="img3.png" alt="APP Loja Simples" class="rounded mx-auto d-block  w-75" >
-            </div>
-            <div class="carousel-item">
-              <img src="img4.png" alt="APP Loja Simples" class="rounded mx-auto d-block  w-75" >
-            </div>
-            <div class="carousel-item">
-              <img src="calc.png" alt="APP Loja Simples" class="rounded mx-auto d-block  w-75" >
+              <iframe src="https://albumizr.com/a/xWql" scrolling="no" frameborder="0" allowfullscreen width="700" height="400"></iframe>
+              <p>Um website simples com um sistema de rankings, feito para testar funcionalidades de design do BootStrap.
+                <br>Feito usando HTML, CSS, JavaScript e BootStrap.</p>
             </div>
           </div>
         
-          <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
+          <button class="carousel-control-prev" type="button"  data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"style="margin-right: 85px;"></span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
+          <button class="carousel-control-next" type="button"  data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"style="margin-left: 85px;"></span>
           </button>
           
         </div>
+
     </div>
-<br>
-<br>
-  <div class="b-example-divider"></div>
-    <h1>Meus outros websites:</h1>
-    <a class="lead mb-4" href="https://richardcxz.github.io/rank2/">Demo de um sistema de ranking</a>
-  <div class="b-example-divider"></div>
+<br><br><br><br><br><br><br>
 
-  <div id="cont" class="container col-xl-10 col-xxl-8 px-4 py-5 text-center">
-    <div class="row align-items-center g-lg-5 py-5">
-        <h1>Gostou do que viu?</h1>
-        <h1>Me mande uma mensagem no e-mail para que possamos
-           nos comunicar. Muito obrigado!</h1>
-      <h1 >richard8lake@gmail.com</h1>
-      <div class="col-md-10 mx-auto col-lg-5 text-dark">
-        
+<div id="cont" href="#cont" class="wrapper" data-aos="fade-up">
+  <h1  class="display-5 fw-bold" style="margin-right:0%; margin-left: 0%;">Contato</h1>
+      <form action="mailto:richard8lake@gmail.com" method="post" enctype="text/plain">
+        <label for="subject">Assunto</label><br>
+        <input type="text" id="subject" name="subject"><br>
+        <label for="message">Mensagem</label><br>
+        <textarea id="message" name="body"></textarea><br><br>
+        <input type="submit" value="Enviar">
+      </form>
+</div>
 
-      </div>
-    </div>
-  </div>
-
-  <div class="b-example-divider"></div>
-
-  <div class="bg-dark text-secondary px-4 py-5 text-center">
+  <div class="px-4 py-5 text-center" style="margin-bottom: 4%;">
     <div class="py-5">
-      <p class="display-6 fw-bold text-white" data-aos="fade-up">by Richard</p>
+      <p class="display-7" data-aos="fade-up">by Richard</p>
       <div class="col-lg-6 mx-auto">
-        <p class="fs-5 mb-4" data-aos="fade-right" data-aos-easing="ease" data-aos-delay="350">Obrigado pela visita!</p>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <button type="button" class="btn btn-outline-light btn-lg px-4"><a id="con" class="nav-link" href="#cont">Contato</a></button>
-        </div>
+        <p class="fs-5 mb-4" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="350">Obrigado pela visita!</p>
       </div>
     </div>
   </div>
-
-  <div class="b-example-divider mb-0"></div>
-
+  <br><br><br><br><br><br><br>
 </main>
+</body>
 
-
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
+<script>
+        const form = document.querySelector('form');
+        const subjectInput = document.querySelector('#subject');
+        const messageInput = document.querySelector('#message');
       
-  </body>
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+      
+          const subject = subjectInput.value;
+          const body = messageInput.value;
+      
+          const mailtoLink = `mailto:richard8lake@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+          window.location.href = mailtoLink;
+        });
+</script>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
+<script>
+    function hideLoading() {
+      var loading = document.getElementById("loading");
+      loading.style.opacity = 1;
+      (function fade() {
+        (loading.style.opacity -= .1) < 0 ? loading.style.display = "none" : setTimeout(fade, 40)
+      })();
+    }
+    setTimeout(hideLoading, 1000);
+  
+    
 AOS.init();
 
 AOS.init({
@@ -244,19 +286,35 @@ AOS.init({
 
 });
 
+var navbar = document.querySelector('.navbar');
+var ricOffset = document.querySelector('#ric').offsetTop;
+var projOffset = document.querySelector('#proj').offsetTop;
+var contOffset = document.querySelector('#cont').offsetTop;
 
-document.getElementById("pro").onclick = function() {prox()};
+window.addEventListener('scroll', function() {
+  var scrollPos = window.scrollY || window.pageYOffset;
 
-    function prox() {
-      var a = document.getElementById("in");
-      var b = document.getElementById("pro");
-      var c = document.getElementById("con");
+  if (scrollPos >= ricOffset && scrollPos < projOffset) {
+      navbar.querySelector('#projetos').classList.remove('active');
+      navbar.querySelector('#contato').classList.remove('active');
+      navbar.querySelector('#inicio').classList.add('active');
+  } else if (scrollPos >= projOffset && scrollPos < contOffset) {
+      navbar.querySelector('#inicio').classList.remove('active');
+      navbar.querySelector('#contato').classList.remove('active');
+      navbar.querySelector('#projetos').classList.add('active');
+  } else if (scrollPos >= contOffset) {
+      document.getElementById('inicio').classList.remove('active');
+      document.getElementById('projetos').classList.remove('active');
+      navbar.querySelector('#inicio').classList.remove('active');
+      navbar.querySelector('#projetos').classList.remove('active');
+      navbar.querySelector('#contato').classList.add('active');
+  }
+});   
 
-      a.classList.remove("nav-link active");
-      a.classList.add("nav-link");
-      b.classList.remove("nav-link");
-      b.classList.add("nav-link active");
-    }
+document.getElementById("contato").addEventListener("click", function(){
+  document.getElementById("contato").classList.add("active");
+  document.getElementById("inicio").classList.remove("active");
+});
 
     var mybutton = document.getElementById("myBtn");
     
