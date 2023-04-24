@@ -23,7 +23,7 @@
     <video id="bg-video" autoplay loop muted>
         <source src="bgv2.mp4" type="video/mp4">
       </video>      
-    <div id="blur-bg"></div>
+      <div id="blur-bg"></div>
       <style>
         video {
             position: fixed;
@@ -34,7 +34,7 @@
             object-fit: cover;
             z-index: -1;
           }          
-        #blur-bg {
+          #blur-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -46,260 +46,208 @@
             z-index: -1;
           }
       @media (max-width: 768px) {
-      body {
-      background-color: #e7e7e7;
-      }
-      video {
-      display: none;
-      }
+        video {
+          object-fit: contain;
+        }
       }
       </style>
-      <script>
-        const video = document.getElementById('bg-video');
-
-        // Play the video in reverse when it ends
-        video.addEventListener('ended', function() {
-          this.currentTime = this.duration - 0.1;
-          this.playbackRate = -1;
-          this.play();
-        }, false);
-        
-        // Play the video normally when it reaches the beginning
-        video.addEventListener('timeupdate', function() {
-          if (this.currentTime === 0) {
-            this.playbackRate = 1;
-          }
-        }, false);
-        
-      </script>
-
-      <script src="https://cdn.jsdelivr.net/npm/three@0.135.0/build/three.min.js"></script>
-      <script>
-      // Criando a cena
-      const scene = new THREE.Scene();
-      
-      // Criando a câmera
-      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.z = 5;
-      
-      // Criando a geometria da imagem
-      const geometry = new THREE.PlaneGeometry(6, 6);
-      
-      // Carregando a textura da imagem
-      const loader = new THREE.TextureLoader();
-      const texture = loader.load('image.png');
-      
-      // Criando o material da imagem
-      const material = new THREE.MeshBasicMaterial({
-        map: texture,
-        side: THREE.DoubleSide,
-        transparent: true,
-        alphaTest: 0.5
-      });
-      
-      // Criando o objeto da imagem
-      const image = new THREE.Mesh(geometry, material);
-      scene.add(image);
-      
-      // Renderizando a cena
-      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      renderer.setClearColor(0x000000, 0);
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
-      
-      let currentRotation = 0;
-      let isDragging = false;
-      
-      renderer.domElement.addEventListener('mousedown', () => {
-        isDragging = true;
-      });
-      
-      renderer.domElement.addEventListener('mousemove', (event) => {
-        if (isDragging) {
-          const delta = event.movementX * 0.01;
-          currentRotation += delta;
-          image.rotation.y = currentRotation;
-        }
-      });
-      
-      renderer.domElement.addEventListener('mouseup', () => {
-        isDragging = false;
-      });
-      
-      function animate() {
-        requestAnimationFrame(animate);
-        currentRotation += 0.01;
-        image.rotation.y = currentRotation;
-        renderer.render(scene, camera);
-      }
-      
-      animate();
-      
-      </script>
-      
-
-    <h1 id="ric" href="#ric"></h1>
-
-    <div id="loading"><i class="fa fa-spinner fa-spin"></i></div>
-
-    <button onclick="topFunction()" id="myBtn" title="Ir para o topo"></button>
-
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="mb-auto">
-        <div class="col-4 text-center">
-          <br>
-          <nav class="navbar navbar-expand-md justify-content-center float-md-end fixed-top mx-auto"> 
-            <div class="container-fluid">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav flex-column mb-2 mb-md-0">
-                  <li class="nav-item">
-                    <a id="inicio" class="nav-link active text-dark">Início</a>
-                  </li>
-                  <li class="nav-item">
-                    <a id="projetos" class="nav-link text-dark">Projetos</a>
-                  </li>
-                  <li class="nav-item">
-                    <a id="contato" class="nav-link text-dark">Contato</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
+  <div id="loading"><i class="fa fa-spinner fa-spin"></i></div>
+	<div class="logo-container">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.135.0/build/three.min.js"></script>
+    <script>
+    // Criando a cena
+    const scene = new THREE.Scene();
     
-<main>
-  <h1 id="ric" href="#ric"></h1>
-
-  <div class="px-4 py-5 my-5 text-center">
-    <h1 data-aos="zoom-in" class="display-5 fw-bold">Richard</h1>
-    <br><br><br><br><br><br><br><br>
-    <div class="col-lg-6 mx-auto">
-      <br>
-      <div class="d-grid gap-2 d-sm-flex">
-        <img class="img-fluid d-block mx-auto mb-4" data-aos="zoom-in" src="langs.png" alt="" height="150">
-      </div>
-    </div>
+    // Criando a câmera
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 5;
+    
+    // Criando a geometria da imagem
+    const geometry = new THREE.PlaneGeometry(6, 6);
+    
+    // Carregando a textura da imagem
+    const loader = new THREE.TextureLoader();
+    const texture = loader.load('image.png');
+    
+    // Criando o material da imagem
+    const material = new THREE.MeshBasicMaterial({
+      map: texture,
+      side: THREE.DoubleSide,
+      transparent: true,
+      alphaTest: 0.5
+    });
+    
+    // Criando o objeto da imagem
+    const image = new THREE.Mesh(geometry, material);
+    scene.add(image);
+    
+    // Renderizando a cena
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setClearColor(0x000000, 0);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+    
+    let currentRotation = 0;
+    let isDragging = false;
+    
+    renderer.domElement.addEventListener('mousedown', () => {
+      isDragging = true;
+    });
+    
+    renderer.domElement.addEventListener('mousemove', (event) => {
+      if (isDragging) {
+        const delta = event.movementX * 0.01;
+        currentRotation += delta;
+        image.rotation.y = currentRotation;
+      }
+    });
+    
+    renderer.domElement.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+    
+    function animate() {
+      requestAnimationFrame(animate);
+      currentRotation += 0.01;
+      image.rotation.y = currentRotation;
+      renderer.render(scene, camera);
+    }
+    
+    animate();
+    
+    </script>
   </div>
+		<div class="arrow-container">
+			<div class="left-arrow arrow"><br><br><p>sobre mim</p></div>
+			<div class="right-arrow arrow"><br><br><p>projetos</p></div>
+			<div class="down-arrow arrow" style="align-items: center;"><p><br><br>contato</p></div>
+		</div>
+	
+	<script src="script.js"></script>
 
-  <div class="px-4 pt-5 my-5 text-center border-bottom">
-    <h1 class="display-6 fw-bold" data-aos="fade-up">Sobre mim</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-1" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="300">
-        Meu nome é Richard e sou um estudante de Análise e Desenvolvimento de Sistemas<br> na FATEC.
-        Sempre tive grande afinidade com informática e algoritmos,<br> e hoje estou focado em me aprofundar em diversas tecnologias.<br>
-        Atualmente, sou <b>especializado em Web</b>, trabalhando com <b>HTML5, CSS3, JavaScript</b> e <b>Bootstrap 4.</b>
-        Também tenho experiência com <b>Python</b> e projetos com outras linguagens, como <b>C, C++, C#, React, React Native</b> e <b>Java.</b><br>
-        Estou constantemente aprendendo e me atualizando sobre <b>novas tecnologias</b>, e isso é algo que realmente me anima. 
-        Ao fazer projetos, gosto de usar o<br> desenvolvimento incremental (uma das práticas fundamentais da metodologia ágil).<br>
-        Este portfólio tem como objetivo destacar alguns dos meus projetos mais recentes, incluindo desenvolvimento web, mobile e projetos pessoais. 
-        Cada um desses projetos apresenta um desafio único que eu tive que superar, e estou animado para compartilhar meus esforços com você.
-        <br>Fique à vontade para explorar meu portfólio e obrigado por visitar o website,<br> espero que você goste do que vê!
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #e7e7e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    position: relative;
+  }
+  
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .arrow-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .arrow-container {
+    display: flex;
+  }
+  
+  .arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 20px;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .arrow:hover {
+    opacity: 1;
+  }
+  
+  .left-arrow {
+    background-color: #000000;
+    position: absolute;
+    left: 0;
+  }
+  
+  .right-arrow {
+    background-color: #000000;
+    position: absolute;
+    right: 0;
+  }
+  
+  .down-arrow {
+    background-color: #000000;
+    position: absolute;
+    bottom: 4%;
+    left: 47%;
+  }
 
-      </p>
-    </div>
-  </div>
-
-  <div id="proj" href="#proj" class="px-4 pt-5 my-5 text-center ">
-    <h1  class="display-5 fw-bold" data-aos="fade-up">Meus Projetos</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-1" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="400">Aqui estão alguns projetos que fazem parte do meu portfólio.</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5"></div>
-        <br>
-        <br>
-
-        <div id="demo" class="carousel slide align-center" data-bs-ride="carousel">
-
-          <div style="bottom: -50px;"class="carousel-indicators bottom">
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
-          </div>
-        
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="const.png" alt="Calculadora" class="rounded mx-auto d-block  w-75">
-              <p>Em atualização.</p>
-            </div>
-            <div class="carousel-item">
-              <iframe src="https://albumizr.com/a/SjAW" scrolling="no" frameborder="0" allowfullscreen width="700" height="400"></iframe>
-              <p>Um sistema para idealização, desenvolvimento e gestão de projetos de programação feitos por equipes com poucos integrantes. 
-                Esse sistema inclui páginas que auxiliam na comunicação, separação de tarefas, gerenciamento de membros, acompanhamento 
-                e revisão do desenvolvimento de um projeto.<br>Feito usando HTML, CSS, JavaScript, BootStrap e NodeJS.</p>
-            </div>
-            <div class="carousel-item">
-              <iframe src="https://albumizr.com/a/71oz" scrolling="no" frameborder="0" allowfullscreen width="700" height="400"></iframe>
-              <p>Um projeto para o arduino, onde o usuário usa o teclado para criar uma melodia e a envia ao arduino, que processa a mesma e a toca.
-              <br>Feito usando HTML, CSS, JavaScript, BootStrap e NodeJS.</p>
-            </div>
-            <div class="carousel-item ">
-              <iframe src="https://albumizr.com/a/4JhS" scrolling="no" frameborder="0" allowfullscreen width="700" height="400"></iframe>
-              <p>Uma aplicação simples mobile que funciona como uma loja, feita para testar funcionalidades do RNative.
-                <br>Feito com React Native.</p>
-            </div>
-            <div class="carousel-item">
-              <iframe src="https://albumizr.com/a/xWql" scrolling="no" frameborder="0" allowfullscreen width="700" height="400"></iframe>
-              <p>Um website simples com um sistema de rankings, feito para testar funcionalidades de design do BootStrap.
-                <br>Feito usando HTML, CSS, JavaScript e BootStrap.</p>
-            </div>
-          </div>
-        
-          <button class="carousel-control-prev" type="button"  data-bs-target="#demo" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"style="margin-right: 85px;"></span>
-          </button>
-          <button class="carousel-control-next" type="button"  data-bs-target="#demo" data-bs-slide="next">
-            <span class="carousel-control-next-icon"style="margin-left: 85px;"></span>
-          </button>
-          
-        </div>
-
-    </div>
-<br><br><br><br><br><br><br>
-
-<div id="cont" href="#cont" class="wrapper" data-aos="fade-up">
-  <h1  class="display-5 fw-bold" style="margin-right:0%; margin-left: 0%;">Contato</h1>
-      <form action="mailto:richard8lake@gmail.com" method="post" enctype="text/plain">
-        <label for="subject">Assunto</label><br>
-        <input type="text" id="subject" name="subject"><br>
-        <label for="message">Mensagem</label><br>
-        <textarea id="message" name="body"></textarea><br><br>
-        <input type="submit" value="Enviar">
-      </form>
-</div>
-
-  <div class="px-4 py-5 text-center" style="margin-bottom: 4%;">
-    <div class="py-5">
-      <p class="display-7" data-aos="fade-up">by Richard</p>
-      <div class="col-lg-6 mx-auto">
-        <p class="fs-5 mb-4" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="350">Obrigado pela visita!</p>
-      </div>
-    </div>
-  </div>
-  <br><br><br><br><br><br><br>
-</main>
-</body>
-
+</style>
 <script>
-        const form = document.querySelector('form');
-        const subjectInput = document.querySelector('#subject');
-        const messageInput = document.querySelector('#message');
-      
-        form.addEventListener('submit', function(event) {
-          event.preventDefault();
-      
-          const subject = subjectInput.value;
-          const body = messageInput.value;
-      
-          const mailtoLink = `mailto:richard8lake@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      
-          window.location.href = mailtoLink;
-        });
+  const leftArrow = document.querySelector('.left-arrow');
+const rightArrow = document.querySelector('.right-arrow');
+const downArrow = document.querySelector('.down-arrow');
+
+const content1 = document.querySelector('#content1');
+const content2 = document.querySelector('#content2');
+const content3 = document.querySelector('#content3');
+
+let timeoutId;
+
+leftArrow.addEventListener('mouseenter', () => {
+	timeoutId = setTimeout(() => {
+		location.replace("https://richardcxz.github.io/index2.html");
+	}, 500);
+});
+
+leftArrow.addEventListener('mouseleave', () => {
+	clearTimeout(timeoutId);
+});
+
+rightArrow.addEventListener('mouseenter', () => {
+	timeoutId = setTimeout(() => {
+		location.replace("https://richardcxz.github.io/index3.html");
+	}, 500);
+});
+
+rightArrow.addEventListener('mouseleave', () => {
+	clearTimeout(timeoutId);
+});
+
+downArrow.addEventListener('mouseenter', () => {
+	timeoutId = setTimeout(() => {
+		location.replace("https://richardcxz.github.io/index4.html");
+	}, 500);
+});
+
+downArrow.addEventListener('mouseleave', () => {
+	clearTimeout(timeoutId);
+});
+
+function showContent(content) {
+	hideAllContent();
+	content.classList.add('show');
+}
+
+function hideAllContent() {
+	content1.classList.remove('show');
+	content2.classList.remove('show');
+	content3.classList.remove('show');
+}
+
 </script>
 
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -338,57 +286,7 @@ AOS.init({
 
 });
 
-var navbar = document.querySelector('.navbar');
-var ricOffset = document.querySelector('#ric').offsetTop;
-var projOffset = document.querySelector('#proj').offsetTop;
-var contOffset = document.querySelector('#cont').offsetTop;
+</script>
 
-window.addEventListener('scroll', function() {
-  var scrollPos = window.scrollY || window.pageYOffset;
-
-  if (scrollPos >= ricOffset && scrollPos < projOffset) {
-      navbar.querySelector('#projetos').classList.remove('active');
-      navbar.querySelector('#contato').classList.remove('active');
-      navbar.querySelector('#inicio').classList.add('active');
-  } else if (scrollPos >= projOffset && scrollPos < contOffset) {
-      navbar.querySelector('#inicio').classList.remove('active');
-      navbar.querySelector('#contato').classList.remove('active');
-      navbar.querySelector('#projetos').classList.add('active');
-  } else if (scrollPos >= contOffset) {
-      document.getElementById('inicio').classList.remove('active');
-      document.getElementById('projetos').classList.remove('active');
-      navbar.querySelector('#inicio').classList.remove('active');
-      navbar.querySelector('#projetos').classList.remove('active');
-      navbar.querySelector('#contato').classList.add('active');
-  }
-});   
-
-document.getElementById("contato").addEventListener("click", function(){
-  document.getElementById("contato").classList.add("active");
-  document.getElementById("inicio").classList.remove("active");
-});
-
-    var mybutton = document.getElementById("myBtn");
-    
-    window.onscroll = function() {scrollFunction()};
-    
-    function scrollFunction() {
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        mybutton.style.display = "block";
-      } else {
-        mybutton.style.display = "none";
-      }
-    }
-    
-    function topFunction() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    }
-
-    $('#pro').click(function () { 
-   $("#in").removeClass('nav-link active').addClass('nav-link');
-})
-
-    </script>
-
+</body>
 </html>
