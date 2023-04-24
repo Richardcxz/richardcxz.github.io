@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Richard Mateus">
+    <meta name="generator" content="">
+    <title>Richard - Início</title>
+    <link rel="icon" type="image/x-icon" href="1x1.png">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <link rel="stylesheet" href="design.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+    <script src="https://use.fontawesome.com/bad294cf04.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  
+  </head>
+
+  <div class="left-arrow arrow" style="position: fixed; top: 2%; left: 0;"><br><p>voltar</p></div>
+
+  <body class="text-dark">
+
+    <video id="bg-video" autoplay loop muted>
+        <source src="bgv2.mp4" type="video/mp4">
+      </video>      
+      <div id="blur-bg"></div>
+      <style>
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 130%;
+            height: 130%;
+            object-fit: cover;
+            z-index: -1;
+          }          
+          #blur-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #e7e7e7;
+            backdrop-filter: blur(8px);
+            opacity: 0.5;
+            z-index: -1;
+          }
+      @media (max-width: 768px) {
+        video {
+          object-fit: contain;
+        }
+      }
+      </style>
+      <script>
+        const video = document.getElementById('bg-video');
+
+        // Play the video in reverse when it ends
+        video.addEventListener('ended', function() {
+          this.currentTime = this.duration - 0.1;
+          this.playbackRate = -1;
+          this.play();
+        }, false);
+        
+        // Play the video normally when it reaches the beginning
+        video.addEventListener('timeupdate', function() {
+          if (this.currentTime === 0) {
+            this.playbackRate = 1;
+          }
+        }, false);
+        
+      </script>
+
+    <div id="loading"><i class="fa fa-spinner fa-spin"></i></div>
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    
+<main>
+  <div class="px-4 pt-5 my-5 text-center" style="margin-top: -41px; position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;">
+    <h1  class="display-5 fw-bold" data-aos="fade-up">Meus Projetos</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-1" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="400">Aqui estão alguns projetos que fazem parte do meu portfólio.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5"></div>
+
+        <div id="demo" class="carousel slide align-center" data-bs-ride="carousel">
+
+          <div style="bottom: -50px;"class="carousel-indicators bottom">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
+          </div>
+        
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="const.png" alt="Calculadora" class="rounded mx-auto d-block  w-75">
+              <p>Em atualização.</p>
+            </div>
+            <div class="carousel-item">
+              <iframe src="https://albumizr.com/a/SjAW" scrolling="no" frameborder="0" allowfullscreen width="700" height="400"></iframe>
+              <p>Um sistema para idealização, desenvolvimento e gestão de projetos de programação feitos por equipes com poucos integrantes. 
+                Esse sistema inclui páginas que auxiliam na comunicação, separação de tarefas, gerenciamento de membros, acompanhamento 
+                e revisão do desenvolvimento de um projeto.<br>Feito usando HTML, CSS, JavaScript, BootStrap e NodeJS.</p>
+            </div>
+            <div class="carousel-item">
+              <iframe src="https://albumizr.com/a/71oz" scrolling="no" frameborder="0" allowfullscreen width="700" height="400"></iframe>
+              <p>Um projeto para o arduino, onde o usuário usa o teclado para criar uma melodia e a envia ao arduino, que processa a mesma e a toca.
+              <br>Feito usando HTML, CSS, JavaScript, BootStrap e NodeJS.</p>
+            </div>
+            <div class="carousel-item ">
+              <iframe src="https://albumizr.com/a/4JhS" scrolling="no" frameborder="0" allowfullscreen width="700" height="400"></iframe>
+              <p>Uma aplicação simples mobile que funciona como uma loja, feita para testar funcionalidades do RNative.
+                <br>Feito com React Native.</p>
+            </div>
+            <div class="carousel-item">
+              <iframe src="https://albumizr.com/a/xWql" scrolling="no" frameborder="0" allowfullscreen width="700" height="400"></iframe>
+              <p>Um website simples com um sistema de rankings, feito para testar funcionalidades de design do BootStrap.
+                <br>Feito usando HTML, CSS, JavaScript e BootStrap.</p>
+            </div>
+          </div>
+        
+          <button class="carousel-control-prev" type="button"  data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"style="margin-right: 85px;"></span>
+          </button>
+          <button class="carousel-control-next" type="button"  data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"style="margin-left: 85px;"></span>
+          </button>
+          
+        </div>
+
+    </div>
+<br>
+</main>
+</body>
+
+<style>
+  .container {
+    position: relative;
+  }
+  
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .arrow-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .arrow-container {
+    display: flex;
+  }
+  
+  .arrow {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 0 20px;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .arrow:hover {
+    opacity: 1;
+  }
+  
+  .left-arrow {
+    background-color: #000000;
+    position: absolute;
+    left: 0;
+  }
+
+</style>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<script>
+    function hideLoading() {
+      var loading = document.getElementById("loading");
+      loading.style.opacity = 1;
+      (function fade() {
+        (loading.style.opacity -= .1) < 0 ? loading.style.display = "none" : setTimeout(fade, 40)
+      })();
+    }
+    setTimeout(hideLoading, 1000);
+  
+    
+AOS.init();
+
+AOS.init({
+  disable: false,
+  startEvent: 'DOMContentLoaded',
+  initClassName: 'aos-init',
+  animatedClassName: 'aos-animate',
+  useClassNames: false,
+  disableMutationObserver: false,
+  debounceDelay: 50,
+  throttleDelay: 99,
+  
+  offset: 120,
+  delay: 0,
+  duration: 400,
+  easing: 'ease',
+  once: false,
+  mirror: false,
+  anchorPlacement: 'top-bottom',
+
+});
+
+</script>
+<script>
+const leftArrow = document.querySelector('.left-arrow');
+
+const content1 = document.querySelector('#content1');
+
+let timeoutId;
+
+leftArrow.addEventListener('mouseenter', () => {
+	timeoutId = setTimeout(() => {
+		location.replace('teste.html');
+	}, 1000);
+});
+
+leftArrow.addEventListener('mouseleave', () => {
+	clearTimeout(timeoutId);
+});
+
+
+function showContent(content) {
+	hideAllContent();
+	content.classList.add('show');
+}
+
+function hideAllContent() {
+	content1.classList.remove('show');
+}
+
+</script>
+</html>

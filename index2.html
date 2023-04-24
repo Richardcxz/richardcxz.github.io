@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Richard Mateus">
+    <meta name="generator" content="">
+    <title>Richard - Início</title>
+    <link rel="icon" type="image/x-icon" href="1x1.png">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <link rel="stylesheet" href="design.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+    <script src="https://use.fontawesome.com/bad294cf04.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  
+  </head>
+
+  <div class="left-arrow arrow" style="position: fixed; top: 2%; left: 0;"><br><p>voltar</p></div>
+
+  <body class="text-dark">
+
+    <video id="bg-video" autoplay loop muted>
+        <source src="bgv2.mp4" type="video/mp4">
+      </video>      
+      <div id="blur-bg"></div>
+      <style>
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 130%;
+            height: 130%;
+            object-fit: cover;
+            z-index: -1;
+          }          
+          #blur-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #e7e7e7;
+            backdrop-filter: blur(8px);
+            opacity: 0.5;
+            z-index: -1;
+          }
+      @media (max-width: 768px) {
+        video {
+          object-fit: contain;
+        }
+      }
+      </style>
+      <script>
+        const video = document.getElementById('bg-video');
+
+        // Play the video in reverse when it ends
+        video.addEventListener('ended', function() {
+          this.currentTime = this.duration - 0.1;
+          this.playbackRate = -1;
+          this.play();
+        }, false);
+        
+        // Play the video normally when it reaches the beginning
+        video.addEventListener('timeupdate', function() {
+          if (this.currentTime === 0) {
+            this.playbackRate = 1;
+          }
+        }, false);
+        
+      </script>
+
+    <div id="loading"><i class="fa fa-spinner fa-spin"></i></div>
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    
+<main>
+  <div class="px-4 py-5 my-5 text-center">
+    <h1 data-aos="zoom-in" class="display-5 fw-bold">Richard</h1>
+    <br><br><br>
+    <div class="col-lg-6 mx-auto">
+      <br>
+      <div class="d-grid gap-2 d-sm-flex">
+        <img class="img-fluid d-block mx-auto mb-4" data-aos="zoom-in" src="langs.png" alt="" height="150">
+      </div>
+    </div>
+  </div>
+
+  <div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-6 fw-bold" data-aos="fade-up">Sobre mim</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-1" data-aos="fade-up" data-aos-easing="ease" data-aos-delay="300">
+        Meu nome é Richard e sou um estudante de Análise e Desenvolvimento de Sistemas<br> na FATEC.
+        Sempre tive grande afinidade com informática e algoritmos,<br> e hoje estou focado em me aprofundar em diversas tecnologias.<br>
+        Atualmente, sou <b>especializado em Web</b>, trabalhando com <b>HTML5, CSS3, JavaScript</b> e <b>Bootstrap 4.</b>
+        Também tenho experiêcia com <b>Python</b> e projetos com outras linguagens, como <b>C, C++, C#, React, React Native</b> e <b>Java.</b><br>
+        Estou constantemente aprendendo e me atualizando sobre <b>novas tecnologias</b>, e isso é algo que realmente me anima. 
+        Ao fazer projetos, gosto de usar o<br> desenvolvimento incremental (uma das práticas fundamentais da metodologia ágil).<br>
+        Este portfólio tem como objetivo destacar alguns dos meus projetos mais recentes, incluindo desenvolvimento web, mobile e projetos pessoais. 
+        Cada um desses projetos apresenta um desafio único que eu tive que superar, e estou animado para compartilhar meus esforços com você.
+        <br>Fique à vontade para explorar meu portfólio e obrigado por visitar o website,<br> espero que você goste do que vê!
+
+      </p>
+    </div>
+  </div>
+
+  <br><br><br>
+</main>
+</body>
+
+<style>
+  .container {
+    position: relative;
+  }
+  
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .arrow-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .arrow-container {
+    display: flex;
+  }
+  
+  .arrow {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 0 20px;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .arrow:hover {
+    opacity: 1;
+  }
+  
+  .left-arrow {
+    background-color: #000000;
+    position: absolute;
+    left: 0;
+  }
+
+</style>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<script>
+    function hideLoading() {
+      var loading = document.getElementById("loading");
+      loading.style.opacity = 1;
+      (function fade() {
+        (loading.style.opacity -= .1) < 0 ? loading.style.display = "none" : setTimeout(fade, 40)
+      })();
+    }
+    setTimeout(hideLoading, 1000);
+  
+    
+AOS.init();
+
+AOS.init({
+  disable: false,
+  startEvent: 'DOMContentLoaded',
+  initClassName: 'aos-init',
+  animatedClassName: 'aos-animate',
+  useClassNames: false,
+  disableMutationObserver: false,
+  debounceDelay: 50,
+  throttleDelay: 99,
+  
+  offset: 120,
+  delay: 0,
+  duration: 400,
+  easing: 'ease',
+  once: false,
+  mirror: false,
+  anchorPlacement: 'top-bottom',
+
+});
+
+</script>
+<script>
+const leftArrow = document.querySelector('.left-arrow');
+
+const content1 = document.querySelector('#content1');
+
+let timeoutId;
+
+leftArrow.addEventListener('mouseenter', () => {
+	timeoutId = setTimeout(() => {
+		location.replace('teste.html');
+	}, 1000);
+});
+
+leftArrow.addEventListener('mouseleave', () => {
+	clearTimeout(timeoutId);
+});
+
+
+function showContent(content) {
+	hideAllContent();
+	content.classList.add('show');
+}
+
+function hideAllContent() {
+	content1.classList.remove('show');
+}
+
+</script>
+</html>

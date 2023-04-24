@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Richard Mateus">
+    <meta name="generator" content="">
+    <title>Richard - Início</title>
+    <link rel="icon" type="image/x-icon" href="1x1.png">
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <link rel="stylesheet" href="design.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+    <script src="https://use.fontawesome.com/bad294cf04.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  
+  </head>
+
+  <div class="left-arrow arrow" style="position: fixed; top: 2%; left: 0;"><br><p>voltar</p></div>
+
+  <body class="text-dark">
+
+    <video id="bg-video" autoplay loop muted>
+        <source src="bgv2.mp4" type="video/mp4">
+      </video>      
+      <div id="blur-bg"></div>
+      <style>
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 130%;
+            height: 130%;
+            object-fit: cover;
+            z-index: -1;
+          }          
+          #blur-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #e7e7e7;
+            backdrop-filter: blur(8px);
+            opacity: 0.5;
+            z-index: -1;
+          }
+      @media (max-width: 768px) {
+        video {
+          object-fit: contain;
+        }
+      }
+      </style>
+      <script>
+        const video = document.getElementById('bg-video');
+
+        // Play the video in reverse when it ends
+        video.addEventListener('ended', function() {
+          this.currentTime = this.duration - 0.1;
+          this.playbackRate = -1;
+          this.play();
+        }, false);
+        
+        // Play the video normally when it reaches the beginning
+        video.addEventListener('timeupdate', function() {
+          if (this.currentTime === 0) {
+            this.playbackRate = 1;
+          }
+        }, false);
+        
+      </script>
+
+    <div id="loading"><i class="fa fa-spinner fa-spin"></i></div>
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    
+<main>
+  <div id="cont" href="#cont" class="wrapper" data-aos="fade-up" style="text-align: center; margin-top: -21px;">
+    <h1 class="display-5 fw-bold">Contato</h1>
+    <form action="mailto:richard8lake@gmail.com" method="post" enctype="text/plain">
+      <label for="subject">Assunto</label><br>
+      <input type="text" id="subject" name="subject"><br>
+      <label for="message">Mensagem</label><br>
+      <textarea id="message" name="body"></textarea><br><br>
+      <input type="submit" value="Enviar">
+    </form>
+  </div>
+  
+  
+    <div class="px-4 py-5 text-center">
+      <div class="py-5">
+        <p class="display-7" >by Richard</p>
+        <div class="col-lg-6 mx-auto">
+          <p class="fs-5 mb-4" >Obrigado pela visita!</p>
+        </div>
+      </div>
+    </div>
+</main>
+</body>
+
+<script>
+  const form = document.querySelector('form');
+  const subjectInput = document.querySelector('#subject');
+  const messageInput = document.querySelector('#message');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const subject = subjectInput.value;
+    const body = messageInput.value;
+
+    const mailtoLink = `mailto:richard8lake@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
+  });
+</script>
+
+<style>
+  .container {
+    position: relative;
+  }
+  
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .arrow-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .arrow-container {
+    display: flex;
+  }
+  
+  .arrow {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 0 20px;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .arrow:hover {
+    opacity: 1;
+  }
+  
+  .left-arrow {
+    background-color: #000000;
+    position: absolute;
+    left: 0;
+  }
+
+</style>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<script>
+    function hideLoading() {
+      var loading = document.getElementById("loading");
+      loading.style.opacity = 1;
+      (function fade() {
+        (loading.style.opacity -= .1) < 0 ? loading.style.display = "none" : setTimeout(fade, 40)
+      })();
+    }
+    setTimeout(hideLoading, 1000);
+  
+    
+AOS.init();
+
+AOS.init({
+  disable: false,
+  startEvent: 'DOMContentLoaded',
+  initClassName: 'aos-init',
+  animatedClassName: 'aos-animate',
+  useClassNames: false,
+  disableMutationObserver: false,
+  debounceDelay: 50,
+  throttleDelay: 99,
+  
+  offset: 120,
+  delay: 0,
+  duration: 400,
+  easing: 'ease',
+  once: false,
+  mirror: false,
+  anchorPlacement: 'top-bottom',
+
+});
+
+</script>
+<script>
+const leftArrow = document.querySelector('.left-arrow');
+
+const content1 = document.querySelector('#content1');
+
+let timeoutId;
+
+leftArrow.addEventListener('mouseenter', () => {
+	timeoutId = setTimeout(() => {
+		location.replace('teste.html');
+	}, 1000);
+});
+
+leftArrow.addEventListener('mouseleave', () => {
+	clearTimeout(timeoutId);
+});
+
+
+function showContent(content) {
+	hideAllContent();
+	content.classList.add('show');
+}
+
+function hideAllContent() {
+	content1.classList.remove('show');
+}
+
+</script>
+</html>
