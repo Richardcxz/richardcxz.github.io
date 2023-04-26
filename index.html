@@ -164,6 +164,9 @@
   }
   
   .arrow {
+    display: flex;
+    justify-content: center;
+    text-align: center;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -181,12 +184,14 @@
     background-color: #000000;
     position: absolute;
     left: 0;
+    text-align: right;
   }
   
   .right-arrow {
     background-color: #000000;
     position: absolute;
     right: 0;
+    text-align: left;
   }
   
   .down-arrow {
@@ -194,6 +199,16 @@
     position: absolute;
     bottom: 4%;
     left: 47%;
+    text-align: center;
+  }
+  .left-arrow p {
+    margin-left: 125px;
+  }
+  .right-arrow p {
+    margin-right: 125px;
+  }
+  .down-arrow p {
+    margin-bottom: 80px;
   }
 
 </style>
