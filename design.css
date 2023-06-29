@@ -78,6 +78,10 @@
     background: #e7e7e7;
     overflow-x: hidden;
     font-family: 'Open Sans', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     }
 
   ::-webkit-scrollbar {
