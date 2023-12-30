@@ -23,21 +23,9 @@
   <div class="left-arrow arrow" style="position: fixed; top: 2%; left: 0;"><br><p>voltar</p></div>
 
   <body class="text-dark">
-
-    <video id="bg-video" autoplay loop muted>
-        <source src="bgv2.mp4" type="video/mp4">
-      </video>      
+    
       <div id="blur-bg"></div>
-      <style>
-        video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 130%;
-            height: 130%;
-            object-fit: cover;
-            z-index: -1;
-          }          
+      <style>    
           #blur-bg {
             position: fixed;
             top: 0;
@@ -51,7 +39,7 @@
           }
       @media (max-width: 768px) {
         video {
-          visibility: hidden;
+          
         }
       }
       </style>
